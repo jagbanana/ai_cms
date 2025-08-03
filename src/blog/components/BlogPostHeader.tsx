@@ -30,13 +30,13 @@ export const BlogPostHeader: React.FC<BlogPostHeaderProps> = ({ post }) => {
 
       {/* Hero Image */}
       {frontmatter.image && (
-        <div className="mt-8 flex justify-center">
+        <div className="mt-8 w-full">
           <img
             src={frontmatter.image}
             alt={frontmatter.title}
-            className="max-w-full max-h-64 sm:max-h-80 h-auto object-contain rounded-lg border border-chess-dark-tertiary"
+            className="w-full h-auto object-cover rounded-lg border border-chess-dark-tertiary"
             style={{
-              width: 'auto' // Ensure width adjusts to maintain aspect ratio
+              aspectRatio: '1200/630' // Maintain the native aspect ratio of our featured images
             }}
             onError={(e) => {
               // Hide image if it fails to load

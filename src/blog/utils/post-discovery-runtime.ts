@@ -3,7 +3,7 @@
  * This is a temporary solution while we resolve import.meta.glob issues
  */
 
-import { ProcessedBlogPost, BlogDiscoveryResult, CategoryInfo, MDXModule } from '../types/blog.types'
+import { ProcessedBlogPost, BlogDiscoveryResult, CategoryInfo } from '../types/blog.types'
 import React, { ComponentType } from 'react'
 
 // Import our new posts
@@ -35,7 +35,7 @@ export async function discoverBlogPosts(): Promise<BlogDiscoveryResult> {
         slug: "getting-started-with-ai-cms",
         category: "tips",
         url: "/resources/tips/getting-started-with-ai-cms",
-        component: (GettingStartedWithAICMS as MDXModule).default,
+        component: GettingStartedWithAICMS,
         readingTime: 5
       },
       {
@@ -52,7 +52,7 @@ export async function discoverBlogPosts(): Promise<BlogDiscoveryResult> {
         slug: "installation-and-setup",
         category: "guides",
         url: "/resources/guides/installation-and-setup",
-        component: (InstallationAndSetup as MDXModule).default,
+        component: InstallationAndSetup,
         readingTime: 10
       },
       {
@@ -69,7 +69,7 @@ export async function discoverBlogPosts(): Promise<BlogDiscoveryResult> {
         slug: "complete-customization-guide",
         category: "guides",
         url: "/resources/guides/complete-customization-guide",
-        component: (CompleteCustomizationGuide as MDXModule).default,
+        component: CompleteCustomizationGuide,
         readingTime: 12
       },
       {
@@ -86,7 +86,7 @@ export async function discoverBlogPosts(): Promise<BlogDiscoveryResult> {
         slug: "interesting-cms-facts",
         category: "facts",
         url: "/resources/facts/interesting-cms-facts",
-        component: (InterestingCMSFacts as MDXModule).default,
+        component: InterestingCMSFacts,
         readingTime: 5
       }
     ]
