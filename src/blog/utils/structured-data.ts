@@ -4,10 +4,10 @@ import { ProcessedBlogPost } from '../types/blog.types';
 const CHESS_TRAINER_ORGANIZATION = {
   "@type": "Organization",
   "name": "Chess Trainer",
-  "url": "https://chesstrainer.org",
+  "url": "https://aicms.jaglab.org",
   "logo": {
     "@type": "ImageObject",
-    "url": "https://chesstrainer.org/logo.png",
+    "url": "https://aicms.jaglab.org/logo.png",
     "width": 512,
     "height": 512
   },
@@ -21,14 +21,14 @@ const CHESS_TRAINER_ORGANIZATION = {
 const CHESS_TRAINER_AUTHOR = {
   "@type": "Person",
   "name": "Chess Trainer Team",
-  "url": "https://chesstrainer.org/about"
+  "url": "https://aicms.jaglab.org/about"
 };
 
 /**
  * Generate Article structured data for blog posts
  */
 export function generateArticleSchema(post: ProcessedBlogPost): object {
-  const baseUrl = "https://chesstrainer.org";
+  const baseUrl = "https://aicms.jaglab.org";
   const postUrl = post.category 
     ? `${baseUrl}/${post.category}/${post.slug}`
     : `${baseUrl}/${post.slug}`;
@@ -61,7 +61,7 @@ export function generateArticleSchema(post: ProcessedBlogPost): object {
  * Generate BreadcrumbList structured data for navigation
  */
 export function generateBreadcrumbSchema(path: string): object {
-  const baseUrl = "https://chesstrainer.org";
+  const baseUrl = "https://aicms.jaglab.org";
   const segments = path.split('/').filter(Boolean);
   
   const breadcrumbs = [
@@ -112,13 +112,13 @@ export function generateWebSiteSchema(): object {
     "@type": "WebSite",
     "name": "Chess Trainer",
     "alternateName": "Chess Trainer App",
-    "url": "https://chesstrainer.org",
+    "url": "https://aicms.jaglab.org",
     "description": "Learn chess through interactive lessons, exercises, and practice games. Master chess strategy and tactics with our comprehensive training system.",
     "potentialAction": {
       "@type": "SearchAction",
       "target": {
         "@type": "EntryPoint",
-        "urlTemplate": "https://chesstrainer.org/blog/search?q={search_term_string}"
+        "urlTemplate": "https://aicms.jaglab.org/blog/search?q={search_term_string}"
       },
       "query-input": "required name=search_term_string"
     },
@@ -149,7 +149,7 @@ export function generateFAQSchema(faqs: Array<{question: string; answer: string}
  * Generate HowTo structured data (for tutorial posts)
  */
 export function generateHowToSchema(post: ProcessedBlogPost, steps: Array<{name: string; text: string}>): object {
-  const baseUrl = "https://chesstrainer.org";
+  const baseUrl = "https://aicms.jaglab.org";
   const postUrl = post.category 
     ? `${baseUrl}/${post.category}/${post.slug}`
     : `${baseUrl}/${post.slug}`;

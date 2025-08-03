@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * Cross-Browser Testing Script for ChessTrainer.org
+ * Cross-Browser Testing Script for AI CMS
  * 
  * Performs automated browser testing including:
  * - Visual regression tests across browsers
@@ -91,7 +91,7 @@ class CrossBrowserTester {
   }
 
   async initialize() {
-    console.log(chalk.blue('🚀 Starting Cross-Browser Testing for ChessTrainer.org\n'));
+    console.log(chalk.blue('🚀 Starting Cross-Browser Testing for AI CMS\n'));
     
     // Ensure output directory exists
     await fs.mkdir(CONFIG.outputDir, { recursive: true });
@@ -592,7 +592,7 @@ class CrossBrowserTester {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ChessTrainer.org Cross-Browser Test Report</title>
+    <title>AI CMS Cross-Browser Test Report</title>
     <style>
         body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; margin: 0; padding: 20px; background: #f5f5f5; }
         .container { max-width: 1200px; margin: 0 auto; }
@@ -620,7 +620,7 @@ class CrossBrowserTester {
 <body>
     <div class="container">
         <div class="header">
-            <h1>ChessTrainer.org Cross-Browser Test Report</h1>
+            <h1>AI CMS Cross-Browser Test Report</h1>
             <p><strong>Generated:</strong> ${new Date().toLocaleString()}</p>
             <p><strong>Test Duration:</strong> ${new Date(this.results.summary.endTime) - new Date(this.results.summary.startTime)}ms</p>
         </div>
@@ -705,7 +705,7 @@ class CrossBrowserTester {
   }
 
   async generateMarkdownReport() {
-    const markdownContent = `# ChessTrainer.org Cross-Browser Test Report
+    const markdownContent = `# AI CMS Cross-Browser Test Report
 
 Generated: ${new Date().toLocaleString()}
 

@@ -1,5 +1,5 @@
 /**
- * Error Tracking Service for ChessTrainer.org
+ * Error Tracking Service for AI CMS
  * 
  * Provides integration with error tracking services like Sentry,
  * custom error analytics, and performance monitoring.

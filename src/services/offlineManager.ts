@@ -1,5 +1,5 @@
 /**
- * Offline Manager for ChessTrainer.org
+ * Offline Manager for AI CMS
  * 
  * Manages offline functionality, service worker communication, and sync operations.
  */

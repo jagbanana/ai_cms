@@ -20,10 +20,10 @@ interface BlogSEOProps {
 export function BlogSEO({
   title = 'Chess Training Resources | Tips, Guides & News',
   description = 'Learn chess with our comprehensive training resources. Find expert tips, in-depth guides, and latest news to improve your chess skills.',
-  image = 'https://chesstrainer.org/assets/chess-trainer-og-image.jpg',
+  image = 'https://aicms.jaglab.org/assets/chess-trainer-og-image.jpg',
   type = 'website',
   post,
-  canonical = 'https://chesstrainer.org/blog',
+  canonical = 'https://aicms.jaglab.org/blog',
   path = '/blog'
 }: BlogSEOProps) {
   const fullTitle = title.includes('Chess Trainer') ? title : `${title} | Chess Trainer`;

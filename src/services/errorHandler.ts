@@ -1,5 +1,5 @@
 /**
- * Global Error Handling Service for ChessTrainer.org
+ * Global Error Handling Service for AI CMS
  * 
  * Provides comprehensive error handling with categorization, retry logic,
  * user notifications, and error tracking for the puzzle system.

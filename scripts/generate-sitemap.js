@@ -12,7 +12,7 @@ const projectRoot = join(__dirname, '..');
 const sitemapPath = join(projectRoot, 'public', 'sitemap.xml');
 
 // Base URL for the site
-const BASE_URL = 'https://chesstrainer.org';
+const BASE_URL = 'https://aicms.jaglab.org';
 
 // Category information
 const BLOG_CATEGORIES = {

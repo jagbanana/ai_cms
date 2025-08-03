@@ -16,7 +16,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 // Configuration
-const SITE_URL = 'https://chesstrainer.org';
+const SITE_URL = 'https://aicms.jaglab.org';
 const BLOG_BASE_URL = `${SITE_URL}/blog`;
 const RSS_OUTPUT_PATH = path.join(__dirname, '../public/rss.xml');
 const POSTS_DIR = path.join(__dirname, '../src/blog/posts');
@@ -38,7 +38,7 @@ const FEED_CONFIG = {
   },
   author: {
     name: 'Chess Trainer Team',
-    email: 'team@chesstrainer.org',
+    email: 'team@aicms.jaglab.org',
     link: SITE_URL
   }
 };
@@ -202,7 +202,7 @@ function generateRSSFeed() {
       author: [
         {
           name: post.author,
-          email: 'team@chesstrainer.org',
+          email: 'team@aicms.jaglab.org',
           link: SITE_URL
         }
       ],

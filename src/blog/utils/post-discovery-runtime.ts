@@ -29,7 +29,7 @@ export async function discoverBlogPosts(): Promise<BlogDiscoveryResult> {
           slug: "getting-started-with-ai-cms",
           category: "tips",
           author: "AI CMS Team",
-          image: "/blog-assets/tips-placeholder.svg",
+          image: "/blog-assets/getting-started-with-ai-cms-featured.svg",
           keywords: ["AI CMS", "getting started", "user guide", "MDX", "content creation", "blog setup"]
         },
         slug: "getting-started-with-ai-cms",
@@ -46,7 +46,7 @@ export async function discoverBlogPosts(): Promise<BlogDiscoveryResult> {
           slug: "installation-and-setup",
           category: "guides",
           author: "AI CMS Team",
-          image: "/blog-assets/guides-placeholder.svg",
+          image: "/blog-assets/installation-and-setup-featured.svg",
           keywords: ["AI CMS", "installation", "setup", "deployment", "configuration", "GitHub", "clone"]
         },
         slug: "installation-and-setup",
@@ -63,7 +63,7 @@ export async function discoverBlogPosts(): Promise<BlogDiscoveryResult> {
           slug: "complete-customization-guide",
           category: "guides",
           author: "AI CMS Team",
-          image: "/blog-assets/guides-placeholder.svg",
+          image: "/blog-assets/complete-customization-guide-featured.svg",
           keywords: ["AI CMS", "customization", "guide", "themes", "components", "MDX"]
         },
         slug: "complete-customization-guide",
@@ -80,7 +80,7 @@ export async function discoverBlogPosts(): Promise<BlogDiscoveryResult> {
           slug: "interesting-cms-facts",
           category: "facts",
           author: "AI CMS Team",
-          image: "/blog-assets/facts-placeholder.svg",
+          image: "/blog-assets/interesting-cms-facts-featured.svg",
           keywords: ["CMS facts", "content management", "web history", "interesting facts"]
         },
         slug: "interesting-cms-facts",

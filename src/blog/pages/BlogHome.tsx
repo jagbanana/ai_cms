@@ -176,7 +176,7 @@ const BlogHome: React.FC<BlogHomeProps> = () => {
       <BlogSEO
         title="Chess Training Resources | Tips, Guides & News"
         description="Learn chess with our comprehensive training resources. Find expert tips, in-depth guides, and latest news to improve your chess skills."
-        canonical="https://chesstrainer.org/blog"
+        canonical="https://aicms.jaglab.org/blog"
         type="blog"
         path="/blog"
       />
@@ -185,11 +185,10 @@ const BlogHome: React.FC<BlogHomeProps> = () => {
           {/* Header */}
           <header className="text-center mb-12">
             <h1 className="text-4xl font-bold text-white mb-4">
-              Chess Resources
+              Resources
             </h1>
             <p className="text-lg text-slate-300 max-w-2xl mx-auto">
-              Tips, strategies, and insights to improve your chess game. 
-              Learn from expert analysis and proven techniques.
+              Tips, strategies, and insights to improve your content marketing.
             </p>
           </header>
 

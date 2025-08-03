@@ -1,5 +1,5 @@
 /**
- * Service Worker for ChessTrainer.org
+ * Service Worker for AI CMS
  * 
  * Provides offline functionality, error handling, and sync capabilities
  * for the chess puzzle system.
@@ -397,7 +397,7 @@ function getOfflineHTML() {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Offline - ChessTrainer.org</title>
+    <title>Offline - AI CMS</title>
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
