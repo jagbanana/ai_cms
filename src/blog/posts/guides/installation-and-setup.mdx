@@ -1,0 +1,314 @@
+---
+title: "Installation and Setup Guide"
+description: "Complete guide to installing, configuring, and deploying AI CMS for your website"
+date: 2024-01-20
+category: guides
+author: "AI CMS Team"
+readingTime: 10
+image: "/blog-assets/guides-placeholder.svg"
+featured: false
+seo:
+  title: "AI CMS Installation Guide - Setup and Deployment"
+  description: "Step-by-step guide to install and configure AI CMS. Includes local development setup, environment configuration, and deployment options."
+  keywords: ["AI CMS", "installation", "setup", "deployment", "configuration", "GitHub", "clone"]
+---
+
+Ready to set up your own AI CMS? This comprehensive guide will take you from cloning the repository to having a fully functional content management system running on your domain.
+
+<TableOfContents />
+
+## Prerequisites
+
+Before starting, make sure you have:
+
+- **Node.js 18+** installed on your machine
+- **Git** for cloning the repository
+- A **code editor** (VS Code recommended)
+- Basic familiarity with **command line/terminal**
+
+<Callout type="info" title="New to Development?">
+  Don't worry if you're new to this! We'll walk through each step. The AI CMS is designed to be beginner-friendly while still being powerful for advanced users.
+</Callout>
+
+## Step 1: Clone the Repository
+
+First, get the AI CMS code on your machine:
+
+```bash
+# Clone the repository
+git clone https://github.com/your-username/ai-cms.git
+
+# Navigate to the project directory
+cd ai-cms
+
+# Install dependencies
+npm install
+```
+
+## Step 2: Initial Configuration
+
+### Environment Variables
+
+Create your environment file:
+
+```bash
+# Copy the example environment file
+cp .env.example .env
+```
+
+Edit `.env` with your site details:
+
+```env
+# Site Information
+VITE_SITE_NAME="Your Site Name"
+VITE_SITE_URL="https://yoursite.com"
+VITE_SITE_DESCRIPTION="Your site description for SEO"
+
+# Contact Information (optional)
+VITE_CONTACT_EMAIL="hello@yoursite.com"
+VITE_SOCIAL_TWITTER="@yourusername"
+VITE_SOCIAL_GITHUB="https://github.com/yourusername"
+
+# Analytics (optional)
+VITE_GA_TRACKING_ID="G-XXXXXXXXXX"
+VITE_PLAUSIBLE_DOMAIN="yoursite.com"
+
+# Feature Flags
+VITE_ENABLE_SEARCH="true"
+VITE_ENABLE_ANALYTICS="true"
+VITE_ENABLE_COMMENTS="false"
+```
+
+### Package Configuration
+
+Update `package.json` with your project details:
+
+```json
+{
+  "name": "your-site-name",
+  "version": "1.0.0",
+  "description": "Your AI-powered content management system",
+  "homepage": "https://yoursite.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/your-site-name.git"
+  }
+}
+```
+
+## Step 3: Customize Branding
+
+### Site Title and Logo
+
+1. **Update the site title** in `src/components/Layout/Layout.tsx`
+2. **Replace the logo** (optional): Add your logo to `public/` and update the header component
+3. **Customize colors**: Edit `tailwind.config.js` for your brand colors
+
+### Favicon and Meta Images
+
+Replace these files in the `public/` directory:
+- `favicon.ico`
+- `apple-touch-icon.png`
+- `og-image.png` (for social sharing)
+
+## Step 4: Local Development
+
+Start the development server:
+
+```bash
+npm run dev
+```
+
+Your site will be available at `http://localhost:5174`
+
+### Development Workflow
+
+1. **Edit content** in `/src/blog/posts/`
+2. **See changes** automatically reload in browser
+3. **Test features** using the local development server
+4. **Check build** with `npm run build` before deploying
+
+<Callout type="warning" title="Port Configuration">
+  The dev server runs on port 5174 by default. If this conflicts with other projects, change it in `package.json` under the "dev" script.
+</Callout>
+
+## Step 5: Create Your Content
+
+### Remove Example Content
+
+Delete the example posts and create your own:
+
+```bash
+# Remove example posts
+rm src/blog/posts/tips/getting-started-with-ai-cms.mdx
+rm src/blog/posts/guides/complete-customization-guide.mdx
+rm src/blog/posts/facts/interesting-cms-facts.mdx
+```
+
+### Add Your First Post
+
+Create a new post:
+
+```bash
+# Create your first post
+touch src/blog/posts/tips/my-first-post.mdx
+```
+
+Add content with proper frontmatter:
+
+```mdx
+---
+title: "Welcome to My Site"
+description: "My first post with AI CMS"
+date: 2024-01-20
+category: tips
+author: "Your Name"
+readingTime: 3
+---
+
+Welcome to my new site powered by AI CMS! 
+
+This is my first post, and I'm excited to share content with you.
+```
+
+### Update Post Discovery
+
+Edit `src/blog/utils/post-discovery-runtime.ts` to include your new posts instead of the examples.
+
+## Step 6: Build and Test
+
+Before deploying, always test your build:
+
+```bash
+# Build the project
+npm run build
+
+# Preview the built site
+npm run preview
+```
+
+Check for:
+- ✅ No build errors
+- ✅ All pages load correctly
+- ✅ Images display properly
+- ✅ Navigation works
+- ✅ SEO meta tags are correct
+
+## Step 7: Deployment Options
+
+### Option 1: Vercel (Recommended)
+
+1. **Connect your GitHub repo** to Vercel
+2. **Import project** from GitHub
+3. **Configure environment variables** in Vercel dashboard
+4. **Deploy** automatically on every push
+
+### Option 2: Netlify
+
+1. **Connect GitHub repository**
+2. **Set build command**: `npm run build`
+3. **Set publish directory**: `dist`
+4. **Add environment variables**
+5. **Deploy**
+
+### Option 3: GitHub Pages
+
+Add to your `package.json`:
+
+```json
+{
+  "scripts": {
+    "deploy": "npm run build && gh-pages -d dist"
+  }
+}
+```
+
+Deploy:
+
+```bash
+npm install -g gh-pages
+npm run deploy
+```
+
+### Option 4: Manual Upload
+
+1. Run `npm run build`
+2. Upload the `dist/` folder to your web server
+3. Configure your server to serve the files
+
+## Step 8: Configure Domain and SSL
+
+### Custom Domain
+
+1. **Point your domain** to your hosting provider
+2. **Configure DNS** with A records or CNAME
+3. **Enable SSL** (usually automatic with modern hosts)
+4. **Update environment variables** with your final domain
+
+### SEO Setup
+
+1. **Submit sitemap** to Google Search Console: `yoursite.com/sitemap.xml`
+2. **Verify ownership** of your domain
+3. **Set up analytics** (Google Analytics, Plausible, etc.)
+4. **Test social sharing** with the meta tags
+
+## Step 9: Ongoing Maintenance
+
+### Content Updates
+
+1. **Add new posts** to `/src/blog/posts/`
+2. **Update post discovery** in `post-discovery-runtime.ts`
+3. **Test locally** with `npm run dev`
+4. **Deploy** via git push (automatic with Vercel/Netlify)
+
+### System Updates
+
+```bash
+# Update dependencies periodically
+npm update
+
+# Check for security vulnerabilities
+npm audit
+
+# Fix issues
+npm audit fix
+```
+
+## Troubleshooting
+
+### Common Issues
+
+**Build fails with missing dependencies:**
+```bash
+rm -rf node_modules package-lock.json
+npm install
+```
+
+**Images not loading:**
+- Check file paths in your posts
+- Ensure images are in `public/blog-assets/`
+- Verify image formats are supported (jpg, png, svg, webp)
+
+**Posts not appearing:**
+- Check frontmatter format
+- Verify post is added to `post-discovery-runtime.ts`
+- Clear browser cache
+
+**Environment variables not working:**
+- Ensure variables start with `VITE_`
+- Restart dev server after changes
+- Check `.env` file is not in `.gitignore`
+
+<Callout type="success" title="You're Live!">
+  Congratulations! Your AI CMS is now installed and running. Check out the customization guide to explore advanced features and personalization options.
+</Callout>
+
+## Next Steps
+
+- **[Get Started](/resources/tips/getting-started-with-ai-cms)** with creating content
+- **[Customize](/resources/guides/complete-customization-guide)** your site's appearance and features
+- **Join the community** for support and updates
+
+Need help? Check the documentation or open an issue on GitHub.
+
+<ShareButtons />

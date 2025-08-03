@@ -1,0 +1,375 @@
+---
+title: "Complete AI CMS Customization Guide"
+description: "A comprehensive guide to customizing every aspect of your AI CMS installation"
+date: 2024-01-10
+category: guides
+author: "AI CMS Team"
+readingTime: 12
+image: "/blog-assets/guides-placeholder.svg"
+featured: true
+seo:
+  title: "Complete AI CMS Customization Guide - Step by Step"
+  description: "Learn how to customize AI CMS with this comprehensive guide. From themes to components, we cover everything you need to know."
+  keywords: ["AI CMS", "customization", "guide", "themes", "components", "MDX"]
+---
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. This comprehensive guide will walk you through customizing every aspect of your AI CMS installation.
+
+<TableOfContents />
+
+## Introduction
+
+Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. AI CMS is designed to be highly customizable, allowing you to tailor it to your specific needs.
+
+## Setting Up Your Environment
+
+### Prerequisites
+
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat:
+
+- Node.js 18 or higher
+- npm or pnpm
+- Basic knowledge of React and TypeScript
+
+### Installation Steps
+
+1. Clone the repository
+2. Install dependencies with `npm install`
+3. Copy `.env.example` to `.env`
+4. Run `npm run dev` to start development
+
+## Customizing Themes
+
+### Color Schemes
+
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Modify your color scheme in `tailwind.config.js`:
+
+```javascript
+module.exports = {
+  theme: {
+    extend: {
+      colors: {
+        primary: {
+          50: '#eff6ff',
+          // ... more color values
+        }
+      }
+    }
+  }
+}
+```
+
+### Typography
+
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+## Creating Custom Components
+
+### Basic Component Structure
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit:
+
+```tsx
+interface MyComponentProps {
+  title: string;
+  content: string;
+}
+
+const MyComponent: React.FC<MyComponentProps> = ({ title, content }) => {
+  return (
+    <div className="p-4 bg-white rounded-lg shadow">
+      <h3 className="text-lg font-semibold">{title}</h3>
+      <p className="mt-2 text-gray-600">{content}</p>
+    </div>
+  );
+};
+```
+
+### Registering MDX Components
+
+Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium:
+
+```javascript
+export const mdxComponents = {
+  MyComponent,
+  // ... other components
+};
+```
+
+## Content Organization
+
+### Directory Structure
+
+Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit:
+
+```
+src/blog/posts/
+├── tips/
+│   └── your-tip-post.mdx
+├── guides/
+│   └── your-guide-post.mdx
+├── facts/
+│   └── your-fact-post.mdx
+└── news/
+    └── your-news-post.mdx
+```
+
+### Frontmatter Schema
+
+Sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt:
+
+```yaml
+---
+title: string (required)
+description: string (required)
+date: YYYY-MM-DD (required)
+category: tips | guides | facts | news (required)
+author: string (required)
+readingTime: number (optional)
+image: string (optional)
+featured: boolean (optional)
+seo:
+  title: string (optional)
+  description: string (optional)
+  keywords: string[] (optional)
+---
+```
+
+## SEO Configuration
+
+### Meta Tags
+
+Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet:
+
+1. Page-level meta tags in frontmatter
+2. Site-wide defaults in environment variables
+3. Dynamic Open Graph images
+4. Structured data for rich snippets
+
+### Sitemap Generation
+
+At vero eos et accusamus et iusto odio dignissimos ducimus:
+
+```bash
+npm run generate:sitemap
+```
+
+## Performance Optimization
+
+### Image Optimization
+
+Qui blanditiis praesentium voluptatum deleniti atque corrupti:
+
+- Automatic WebP conversion
+- Responsive image generation
+- Lazy loading implementation
+- CDN integration options
+
+### Bundle Optimization
+
+Et harum quidem rerum facilis est et expedita distinctio:
+
+```bash
+npm run analyze:bundle
+```
+
+## Deployment
+
+### Environment Variables
+
+Nam libero tempore, cum soluta nobis est eligendi optio:
+
+```env
+VITE_SITE_NAME=Your Site Name
+VITE_SITE_URL=https://yoursite.com
+VITE_SITE_DESCRIPTION=Your site description
+VITE_GA_MEASUREMENT_ID=G-XXXXXXXXXX
+```
+
+### Build Process
+
+Cumque nihil impedit quo minus id quod maxime placeat:
+
+```bash
+npm run build
+```
+
+### Deployment Platforms
+
+Facere possimus, omnis voluptas assumenda est:
+
+- Vercel (recommended)
+- Netlify
+- GitHub Pages
+- Custom VPS
+
+## Advanced Features
+
+### Analytics Integration
+
+Omnis dolor repellendus. Temporibus autem quibusdam et:
+
+1. Google Analytics 4
+2. Plausible Analytics
+3. Custom analytics providers
+
+### Content Versioning
+
+Officiis debitis aut rerum necessitatibus saepe eveniet:
+
+- Git-based version control
+- Draft/publish workflow
+- Content rollback capabilities
+
+## Configurable Call-to-Actions
+
+AI CMS includes a powerful system for customizing call-to-action sections throughout your site. You can configure CTAs via environment variables without touching any code.
+
+### Available CTA Locations
+
+The system includes CTAs in these strategic locations:
+
+1. **Blog Post CTA**: Appears after each blog post to drive engagement
+2. **Footer CTAs**: Two promotional sections above the footer
+3. **Custom CTAs**: Can be added to any page using the `<CTASection>` component
+
+### Environment Configuration
+
+Each CTA can be configured using environment variables. Here's the pattern:
+
+```env
+# CTA Configuration Pattern
+VITE_CTA_{NAME}_{PROPERTY}="value"
+```
+
+### Blog Post CTA Example
+
+Configure the CTA that appears after blog posts:
+
+```env
+# Blog Post CTA Configuration
+VITE_CTA_BLOG_POST_HEADING="Ready to Build Your Own CMS?"
+VITE_CTA_BLOG_POST_SUBHEADING="Start creating amazing content with AI CMS. Clone the repository and get started in minutes."
+VITE_CTA_BLOG_POST_BUTTON_TEXT="Get Started"
+VITE_CTA_BLOG_POST_BUTTON_URL="https://github.com/yourusername/ai-cms"
+VITE_CTA_BLOG_POST_ENABLED="true"
+```
+
+### Footer CTAs
+
+Configure the two CTAs that appear in your footer:
+
+```env
+# Primary Footer CTA
+VITE_CTA_FOOTER_PRIMARY_HEADING="Start Your Content Journey"
+VITE_CTA_FOOTER_PRIMARY_SUBHEADING="Download AI CMS and begin creating professional content today"
+VITE_CTA_FOOTER_PRIMARY_BUTTON_TEXT="Download Now"
+VITE_CTA_FOOTER_PRIMARY_BUTTON_URL="https://github.com/yourusername/ai-cms"
+VITE_CTA_FOOTER_PRIMARY_ENABLED="true"
+
+# Secondary Footer CTA
+VITE_CTA_FOOTER_SECONDARY_HEADING="Explore the Documentation"
+VITE_CTA_FOOTER_SECONDARY_SUBHEADING="Learn how to customize and deploy your AI CMS"
+VITE_CTA_FOOTER_SECONDARY_BUTTON_TEXT="View Docs"
+VITE_CTA_FOOTER_SECONDARY_BUTTON_URL="/resources/guides/installation-and-setup"
+VITE_CTA_FOOTER_SECONDARY_ENABLED="true"
+```
+
+<Callout type="info" title="URL Handling">
+  URLs starting with "http" will open in a new tab, while URLs starting with "/" will navigate within your site. This makes it easy to mix external and internal links.
+</Callout>
+
+### CTA Variants
+
+The `<CTASection>` component supports different visual styles:
+
+- **`default`**: Standard CTA with rounded corners and padding
+- **`compact`**: Smaller version for sidebars or tight spaces
+- **`hero`**: Large, prominent CTA for landing pages
+- **`footer`**: Optimized for footer placement
+
+### Adding Custom CTAs
+
+You can add CTAs to any page using the component:
+
+```tsx
+import { CTASection } from '../components/CTASection';
+
+// In your component
+<CTASection
+  ctaName="my-custom-cta"
+  variant="default"
+  className="my-4"
+  onButtonClick={(ctaName, buttonUrl) => {
+    // Optional click tracking
+    console.log(`CTA clicked: ${ctaName}`);
+  }}
+/>
+```
+
+Then configure it with environment variables:
+
+```env
+VITE_CTA_MY_CUSTOM_CTA_HEADING="Your Custom Heading"
+VITE_CTA_MY_CUSTOM_CTA_SUBHEADING="Your compelling subheading"
+VITE_CTA_MY_CUSTOM_CTA_BUTTON_TEXT="Action Button"
+VITE_CTA_MY_CUSTOM_CTA_BUTTON_URL="https://example.com"
+VITE_CTA_MY_CUSTOM_CTA_ENABLED="true"
+```
+
+### Disabling CTAs
+
+To hide any CTA completely, set its `ENABLED` value to `false`:
+
+```env
+VITE_CTA_BLOG_POST_ENABLED="false"
+```
+
+### A/B Testing CTAs
+
+The configuration system makes A/B testing easy. You can:
+
+1. Deploy different versions with different CTA text
+2. Use analytics to track conversion rates
+3. Update environment variables without code changes
+4. Test different button colors via CSS classes
+
+### Best Practices
+
+**Writing Effective CTAs:**
+- Keep headlines under 8 words
+- Make the value proposition clear
+- Use action-oriented button text
+- Test different variants to optimize conversion
+
+**Technical Considerations:**
+- Always provide fallback defaults for missing environment variables
+- Use descriptive CTA names for easy management
+- Consider mobile responsiveness when customizing
+- Track CTA performance with analytics
+
+This flexible system allows you to optimize your conversion funnel without touching code, making it perfect for marketers and content creators who want to iterate quickly.
+
+## Troubleshooting
+
+### Common Issues
+
+Ut et voluptates repudiandae sint et molestiae non recusandae:
+
+1. **Build failures**: Check Node.js version
+2. **Image optimization errors**: Verify image paths
+3. **MDX parsing errors**: Validate frontmatter syntax
+
+### Getting Help
+
+Itaque earum rerum hic tenetur a sapiente delectus:
+
+- Documentation: [link]
+- GitHub Issues: [link]
+- Community Discord: [link]
+
+## Conclusion
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. With this guide, you now have all the knowledge needed to fully customize your AI CMS installation. Happy building!
+
+<ShareButtons />

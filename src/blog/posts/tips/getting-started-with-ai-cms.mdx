@@ -1,0 +1,131 @@
+---
+title: "Getting Started with AI CMS"
+description: "Essential guide to help you start creating content with your new AI-powered CMS installation"
+date: 2024-01-15
+category: tips
+author: "AI CMS Team"
+readingTime: 5
+image: "/blog-assets/tips-placeholder.svg"
+featured: true
+seo:
+  title: "Getting Started with AI CMS - User Guide"
+  description: "Complete user guide for getting started with AI CMS - learn to create posts, use MDX components, and optimize your content workflow."
+  keywords: ["AI CMS", "getting started", "user guide", "MDX", "content creation", "blog setup"]
+---
+
+Welcome to AI CMS! Now that you have the system installed, let's get you creating amazing content. This guide will walk you through the essential features and best practices.
+
+## Creating Your First Post
+
+Your blog posts live in `/src/blog/posts/` organized by category. To create a new post:
+
+1. **Choose a category**: `tips`, `guides`, `facts`, or `news`
+2. **Create an MDX file**: `your-post-slug.mdx`
+3. **Add frontmatter**: Required metadata at the top of your file
+
+<Callout type="info" title="Quick Start">
+  Copy an existing post and modify it to get started quickly. All posts use the same structure and frontmatter format.
+</Callout>
+
+## Essential Frontmatter Fields
+
+Every post needs this frontmatter at the top:
+
+```yaml
+---
+title: "Your Post Title"
+description: "SEO-friendly description (150-160 characters)"
+date: 2024-01-15
+category: tips  # tips, guides, facts, or news
+author: "Your Name"
+readingTime: 5  # estimated minutes
+image: "/blog-assets/your-image.svg"  # optional
+featured: false  # set to true for homepage
+---
+```
+
+## Writing with MDX
+
+MDX combines Markdown with React components. You can use:
+
+### Standard Markdown
+- Headers, lists, links, bold/italic text
+- Code blocks with syntax highlighting
+- Images and blockquotes
+
+### Custom Components
+- `<Callout>` for highlighted content
+- `<TableOfContents>` for long posts
+- `<ShareButtons>` for social sharing
+
+Example:
+```mdx
+<Callout type="warning" title="Important">
+  This will be displayed as a highlighted warning box.
+</Callout>
+```
+
+## Organizing Your Content
+
+### Categories
+- **Tips**: Quick, actionable advice (3-5 min reads)
+- **Guides**: Comprehensive tutorials (10+ min reads)  
+- **Facts**: Interesting information and insights
+- **News**: Updates and announcements
+
+### File Structure
+```
+src/blog/posts/
+├── tips/
+│   ├── getting-started-with-ai-cms.mdx
+│   └── quick-seo-tips.mdx
+├── guides/
+│   ├── complete-customization-guide.mdx
+│   └── deployment-guide.mdx
+└── facts/
+    └── interesting-cms-facts.mdx
+```
+
+## SEO Optimization Tips
+
+1. **Write compelling titles** (50-60 characters)
+2. **Craft meta descriptions** (150-160 characters)
+3. **Use descriptive URLs** (your file name becomes the URL)
+4. **Structure with headers** (H2, H3 for better readability)
+5. **Include relevant keywords** naturally in content
+
+## Content Best Practices
+
+### Writing Style
+- Start with a clear introduction
+- Use short paragraphs (2-3 sentences)
+- Include actionable takeaways
+- End with a clear conclusion
+
+### Technical Details
+- Code blocks are automatically syntax highlighted
+- Images are automatically optimized (WebP, responsive)
+- Reading time is calculated from your frontmatter
+- SEO meta tags are generated automatically
+
+## Publishing Workflow
+
+1. **Create** your MDX file in the appropriate category folder
+2. **Test locally** with `npm run dev`
+3. **Preview** at `http://localhost:5174/resources`
+4. **Build** with `npm run build` to check for errors
+5. **Deploy** your changes to production
+
+<Callout type="success" title="You're Ready!">
+  With these fundamentals, you can start creating professional content. Check out the customization guide for advanced features and styling options.
+</Callout>
+
+## Next Steps
+
+- Read the [Installation Guide](/resources/guides/installation-and-setup) for deployment options
+- Explore the [Customization Guide](/resources/guides/complete-customization-guide) for advanced features
+- Check the project documentation for technical details
+
+Happy writing! 🚀
+
+<ShareButtons />

@@ -1,0 +1,195 @@
+{
+  "budget": {
+    "timings": [
+      {
+        "metric": "first-contentful-paint",
+        "budget": 1800,
+        "tolerance": 200
+      },
+      {
+        "metric": "largest-contentful-paint", 
+        "budget": 2500,
+        "tolerance": 300
+      },
+      {
+        "metric": "cumulative-layout-shift",
+        "budget": 0.1,
+        "tolerance": 0.05
+      },
+      {
+        "metric": "first-input-delay",
+        "budget": 100,
+        "tolerance": 50
+      },
+      {
+        "metric": "time-to-first-byte",
+        "budget": 800,
+        "tolerance": 200
+      },
+      {
+        "metric": "speed-index",
+        "budget": 3000,
+        "tolerance": 500
+      },
+      {
+        "metric": "total-blocking-time",
+        "budget": 300,
+        "tolerance": 100
+      }
+    ],
+    "resourceSizes": [
+      {
+        "resourceType": "total",
+        "budget": 500,
+        "unit": "kB"
+      },
+      {
+        "resourceType": "script",
+        "budget": 200,
+        "unit": "kB"
+      },
+      {
+        "resourceType": "stylesheet",
+        "budget": 50,
+        "unit": "kB"
+      },
+      {
+        "resourceType": "image",
+        "budget": 200,
+        "unit": "kB"
+      },
+      {
+        "resourceType": "font",
+        "budget": 50,
+        "unit": "kB"
+      }
+    ],
+    "resourceCounts": [
+      {
+        "resourceType": "total",
+        "budget": 100
+      },
+      {
+        "resourceType": "script",
+        "budget": 20
+      },
+      {
+        "resourceType": "stylesheet",
+        "budget": 10
+      },
+      {
+        "resourceType": "image",
+        "budget": 30
+      },
+      {
+        "resourceType": "font",
+        "budget": 5
+      }
+    ]
+  },
+  "targets": {
+    "lighthouse": {
+      "performance": 90,
+      "accessibility": 95,
+      "best-practices": 95,
+      "seo": 95
+    },
+    "webPageTest": {
+      "firstView": {
+        "loadTime": 3000,
+        "firstByte": 800,
+        "startRender": 1800,
+        "speedIndex": 3000
+      },
+      "repeatView": {
+        "loadTime": 2000,
+        "firstByte": 500,
+        "startRender": 1200,
+        "speedIndex": 2000
+      }
+    }
+  },
+  "alerts": {
+    "performance": {
+      "threshold": 85,
+      "message": "Performance score below target. Review bundle size and critical path."
+    },
+    "accessibility": {
+      "threshold": 90,
+      "message": "Accessibility score below target. Review semantic HTML and ARIA labels."
+    },
+    "bundleSize": {
+      "threshold": 600,
+      "unit": "kB",
+      "message": "Bundle size exceeds budget. Consider code splitting and tree shaking."
+    },
+    "coreWebVitals": {
+      "lcp": {
+        "threshold": 2500,
+        "message": "LCP too slow. Optimize largest contentful element loading."
+      },
+      "cls": {
+        "threshold": 0.1,
+        "message": "CLS too high. Set explicit dimensions for dynamic content."
+      },
+      "fid": {
+        "threshold": 100,
+        "message": "FID too high. Reduce JavaScript execution time."
+      }
+    }
+  },
+  "monitoring": {
+    "enabled": true,
+    "reportingUrl": "/api/performance-report",
+    "sampleRate": 0.1,
+    "trackingEvents": [
+      "page-load",
+      "route-change",
+      "user-interaction",
+      "error-boundary"
+    ]
+  },
+  "optimizations": {
+    "criticalCSS": {
+      "enabled": true,
+      "threshold": 14
+    },
+    "preloadFonts": {
+      "enabled": true,
+      "fontDisplay": "swap"
+    },
+    "imageOptimization": {
+      "enabled": true,
+      "formats": ["webp", "avif"],
+      "quality": 80,
+      "sizes": [640, 768, 1024, 1280]
+    },
+    "codesplitting": {
+      "enabled": true,
+      "strategy": "route-based",
+      "chunkSizeLimit": 200
+    },
+    "compression": {
+      "gzip": true,
+      "brotli": true
+    }
+  },
+  "baseline": {
+    "date": "2025-01-20",
+    "environment": "production",
+    "version": "1.0.0",
+    "metrics": {
+      "fcp": 1650,
+      "lcp": 2300,
+      "cls": 0.08,
+      "fid": 85,
+      "ttfb": 720,
+      "lighthouse": {
+        "performance": 92,
+        "accessibility": 96,
+        "bestPractices": 94,
+        "seo": 97
+      }
+    }
+  }
+}

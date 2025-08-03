@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offline - ChessTrainer.org</title>
+    <link rel="icon" href="/favicon.ico">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #1e3a8a 0%, #3730a3 50%, #581c87 100%);
+            color: white;
+            padding: 1rem;
+        }
+
+        .container {
+            max-width: 600px;
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 1rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .icon {
+            font-size: 5rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        .status {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 1.5rem 0;
+            font-size: 1rem;
+        }
+
+        .status-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 0.5rem;
+            animation: pulse 2s infinite;
+        }
+
+        .offline {
+            background-color: #ef4444;
+        }
+
+        .online {
+            background-color: #10b981;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .actions {
+            margin: 2rem 0;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            color: white;
+            padding: 0.875rem 2rem;
+            font-size: 1rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            font-weight: 500;
+            min-width: 200px;
+            justify-content: center;
+        }
+
+        .btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-primary {
+            background: rgba(59, 130, 246, 0.8);
+            border-color: #3b82f6;
+        }
+
+        .btn-primary:hover {
+            background: rgba(59, 130, 246, 1);
+        }
+
+        .features {
+            margin-top: 2.5rem;
+            text-align: left;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+        }
+
+        .features h3 {
+            text-align: center;
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .feature {
+            display: flex;
+            align-items: center;
+            padding: 0.5rem 0;
+            font-size: 0.95rem;
+        }
+
+        .feature-icon {
+            margin-right: 0.75rem;
+            font-size: 1.2rem;
+            width: 24px;
+            text-align: center;
+        }
+
+        .cache-info {
+            margin-top: 2rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .cache-item {
+            display: flex;
+            justify-content: space-between;
+            margin: 0.25rem 0;
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                padding: 1.5rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+            }
+            
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="icon">🏰</div>
+        <h1>ChessTrainer.org</h1>
+        <p class="subtitle">You're currently offline, but your chess training can continue!</p>
+        
+        <div class="status" id="connectionStatus">
+            <div class="status-dot offline" id="statusDot"></div>
+            <span id="statusText">Offline</span>
+        </div>
+
+        <div class="actions">
+            <button class="btn btn-primary" onclick="attemptReconnect()">
+                <span id="reconnectText">Try Reconnecting</span>
+            </button>
+            
+            <a href="/" class="btn">
+                Return to App
+            </a>
+        </div>
+
+        <div class="features">
+            <h3>📚 Available Offline Features</h3>
+            <div class="feature-grid">
+                <div class="feature">
+                    <span class="feature-icon">♟️</span>
+                    <span>Practice with cached puzzles</span>
+                </div>
+                <div class="feature">
+                    <span class="feature-icon">📖</span>
+                    <span>Review completed lessons</span>
+                </div>
+                <div class="feature">
+                    <span class="feature-icon">📊</span>
+                    <span>Track progress locally</span>
+                </div>
+                <div class="feature">
+                    <span class="feature-icon">🎯</span>
+                    <span>Continue exercises</span>
+                </div>
+                <div class="feature">
+                    <span class="feature-icon">⚡</span>
+                    <span>Auto-sync when online</span>
+                </div>
+                <div class="feature">
+                    <span class="feature-icon">💾</span>
+                    <span>Queue actions for later</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="cache-info" id="cacheInfo">
+            <h4 style="margin-bottom: 0.5rem;">📦 Cached Content</h4>
+            <div class="cache-item">
+                <span>Puzzles:</span>
+                <span id="puzzleCount">Loading...</span>
+            </div>
+            <div class="cache-item">
+                <span>Lessons:</span>
+                <span id="lessonCount">Loading...</span>
+            </div>
+            <div class="cache-item">
+                <span>Progress:</span>
+                <span id="progressCount">Loading...</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let reconnectAttempts = 0;
+        const maxReconnectAttempts = 5;
+
+        // Update connection status
+        function updateConnectionStatus() {
+            const statusDot = document.getElementById('statusDot');
+            const statusText = document.getElementById('statusText');
+            const reconnectBtn = document.getElementById('reconnectText');
+            
+            if (navigator.onLine) {
+                statusDot.className = 'status-dot online';
+                statusText.textContent = 'Connection Restored!';
+                reconnectBtn.textContent = 'Reload Page';
+                
+                // Auto-reload after a short delay
+                setTimeout(() => {
+                    window.location.href = '/';
+                }, 1500);
+            } else {
+                statusDot.className = 'status-dot offline';
+                statusText.textContent = 'Offline';
+                reconnectBtn.textContent = 'Try Reconnecting';
+            }
+        }
+
+        // Attempt to reconnect
+        async function attemptReconnect() {
+            const reconnectBtn = document.getElementById('reconnectText');
+            
+            if (navigator.onLine) {
+                window.location.href = '/';
+                return;
+            }
+            
+            reconnectBtn.textContent = 'Checking...';
+            reconnectAttempts++;
+            
+            try {
+                // Test connection with a simple fetch
+                const response = await fetch('/', { 
+                    method: 'HEAD',
+                    cache: 'no-cache',
+                    signal: AbortSignal.timeout(5000)
+                });
+                
+                if (response.ok) {
+                    reconnectBtn.textContent = 'Connected! Redirecting...';
+                    setTimeout(() => {
+                        window.location.href = '/';
+                    }, 1000);
+                    return;
+                }
+            } catch (error) {
+                console.log('Connection test failed:', error);
+            }
+            
+            reconnectBtn.textContent = `Try Again (${reconnectAttempts}/${maxReconnectAttempts})`;
+            
+            if (reconnectAttempts >= maxReconnectAttempts) {
+                reconnectBtn.textContent = 'Max attempts reached';
+                setTimeout(() => {
+                    reconnectAttempts = 0;
+                    reconnectBtn.textContent = 'Try Reconnecting';
+                }, 10000);
+            }
+        }
+
+        // Load cache information
+        async function loadCacheInfo() {
+            try {
+                if ('serviceWorker' in navigator) {
+                    const registration = await navigator.serviceWorker.ready;
+                    const sw = registration.active;
+                    
+                    if (sw) {
+                        const messageChannel = new MessageChannel();
+                        
+                        messageChannel.port1.onmessage = (event) => {
+                            const { staticCacheSize, apiCacheSize, queueSize } = event.data;
+                            
+                            document.getElementById('puzzleCount').textContent = `${apiCacheSize || 0} items`;
+                            document.getElementById('lessonCount').textContent = `${staticCacheSize || 0} items`;
+                            document.getElementById('progressCount').textContent = `${queueSize || 0} queued`;
+                        };
+                        
+                        sw.postMessage({ type: 'GET_CACHE_STATUS' }, [messageChannel.port2]);
+                    }
+                }
+            } catch (error) {
+                console.log('Failed to load cache info:', error);
+                document.getElementById('puzzleCount').textContent = 'Unknown';
+                document.getElementById('lessonCount').textContent = 'Unknown';
+                document.getElementById('progressCount').textContent = 'Unknown';
+            }
+        }
+
+        // Initialize
+        updateConnectionStatus();
+        loadCacheInfo();
+
+        // Listen for connection changes
+        window.addEventListener('online', updateConnectionStatus);
+        window.addEventListener('offline', updateConnectionStatus);
+
+        // Periodically check connection
+        setInterval(() => {
+            if (!navigator.onLine) {
+                // Try a quick connectivity test
+                fetch('/', { method: 'HEAD', cache: 'no-cache' })
+                    .then(() => {
+                        if (!navigator.onLine) {
+                            // Connection is back but onLine hasn't updated yet
+                            updateConnectionStatus();
+                        }
+                    })
+                    .catch(() => {
+                        // Still offline
+                    });
+            }
+        }, 10000);
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'r' && (event.ctrlKey || event.metaKey)) {
+                event.preventDefault();
+                attemptReconnect();
+            }
+            if (event.key === 'h') {
+                window.location.href = '/';
+            }
+        });
+    </script>
+</body>
+</html>
