@@ -7,6 +7,8 @@ The fastest way to build great content for your product. Designed for Jamstack d
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/jagbanana/ai_cms)
 [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/jagbanana/ai_cms)
 
+See a live demo at [AI CMS Live Demo](https://aicms.jaglab.org)
+
 ## ✨ Features
 
 - **🚀 Lightning Fast**: Built with React 18, Vite, and optimized for performance
