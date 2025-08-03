@@ -677,3 +677,6 @@ export const getErrorStats = (timeWindowMs?: number) => errorMonitor.getErrorSta
 if (typeof window !== 'undefined' || typeof process !== 'undefined') {
   errorMonitor.initialize().catch(console.error);
 }
+
+// Default export
+export default errorMonitor;

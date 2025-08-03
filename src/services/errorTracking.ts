@@ -7,7 +7,7 @@
 
 import React from 'react';
 import { ErrorDetails } from './errorHandler';
-import { useLogger } from '../hooks/useLogger';
+import logger from '../utils/logger';
 
 export interface ErrorTrackingConfig {
   dsn?: string;
@@ -62,7 +62,7 @@ export interface PerformanceEntry {
 }
 
 class ErrorTrackingService {
-  private logger = useLogger('ErrorTracking');
+  private logger = logger;
   private config: ErrorTrackingConfig;
   private breadcrumbs: Breadcrumb[] = [];
   private sessionId: string;
@@ -121,7 +121,7 @@ class ErrorTrackingService {
     try {
       // Skip Sentry initialization if not available in development
       if (process.env.NODE_ENV === 'development') {
-        this.logger.info('Skipping Sentry initialization in development mode');
+        this.logger.info('ErrorTracking', 'Skipping Sentry initialization in development mode');
         return;
       }
       
@@ -151,7 +151,7 @@ class ErrorTrackingService {
       this.logger.info('Sentry initialized', 'External error tracking enabled');
       */
     } catch (error) {
-      this.logger.warn('Using fallback error tracking', {
+      this.logger.warn('ErrorTracking', 'Using fallback error tracking', {
         error: (error as Error).message
       });
     }
@@ -264,7 +264,7 @@ class ErrorTrackingService {
     const currentCount = this.errorCounts.get(fingerprint) || 0;
     
     if (currentCount >= 10) { // Max 10 of the same error per session
-      this.logger.debug('Too many similar errors', {
+      this.logger.debug('ErrorTracking', 'Too many similar errors', {
         fingerprint,
         count: currentCount
       });
@@ -292,7 +292,7 @@ class ErrorTrackingService {
       }
     });
 
-    this.logger.debug('Error sent to tracking service', {
+    this.logger.debug('ErrorTracking', 'Error sent to tracking service', {
       errorId: errorEvent.id,
       type: errorEvent.tags.type
     });

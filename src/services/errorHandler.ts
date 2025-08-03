@@ -5,7 +5,7 @@
  * user notifications, and error tracking for the puzzle system.
  */
 
-import { useLogger } from '../hooks/useLogger';
+import logger from '../utils/logger';
 
 export interface ErrorDetails {
   id: string;
@@ -69,7 +69,7 @@ export interface ErrorRecoveryAction {
 }
 
 class GlobalErrorHandler {
-  private logger = useLogger('ErrorHandler');
+  private logger = logger;
   private errorQueue: ErrorDetails[] = [];
   private retryTimers = new Map<string, NodeJS.Timeout>();
   private notificationHandlers = new Map<string, (notification: any) => void>();
@@ -91,7 +91,7 @@ class GlobalErrorHandler {
   ): Promise<ErrorDetails> {
     const errorDetails = this.normalizeError(error, context, component);
     
-    this.logger.error(errorDetails.message, {
+    this.logger.error('ErrorHandler', errorDetails.message, {
       errorId: errorDetails.id,
       type: errorDetails.type,
       category: errorDetails.category,
@@ -149,7 +149,7 @@ class GlobalErrorHandler {
         
         // Log successful retry
         if (attempt > 0) {
-          this.logger.info('Retry successful', {
+          this.logger.info('ErrorHandler', 'Retry successful', {
             attempt,
             context
           });
@@ -178,7 +178,7 @@ class GlobalErrorHandler {
           retryConfig.maxDelay
         );
 
-        this.logger.warn(`Attempt ${attempt}/${retryConfig.maxRetries}`, {
+        this.logger.warn('ErrorHandler', `Attempt ${attempt}/${retryConfig.maxRetries}`, {
           error: lastError.message,
           nextRetryIn: delay,
           context
@@ -647,7 +647,7 @@ class GlobalErrorHandler {
       30000
     );
 
-    this.logger.info(`Retry ${error.retryCount}/${error.maxRetries}`, {
+    this.logger.info('ErrorHandler', `Retry ${error.retryCount}/${error.maxRetries}`, {
       errorId: error.id,
       delay
     });
@@ -745,7 +745,7 @@ class GlobalErrorHandler {
   }
 
   private async reportError(error: ErrorDetails): Promise<void> {
-    this.logger.info('Error report submitted', {
+    this.logger.info('ErrorHandler', 'Error report submitted', {
       errorId: error.id
     });
     // Implementation would send error report

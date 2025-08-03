@@ -141,6 +141,10 @@ class CMSLogger {
   seoAction(message: string, data?: any): void {
     this.log(LogLevel.INFO, 'SEO', message, data);
   }
+
+  userAction(category: string, message: string, data?: any): void {
+    this.log(LogLevel.INFO, category, message, data);
+  }
 }
 
 const logger = CMSLogger.getInstance();

@@ -5,7 +5,7 @@
  */
 
 import React from 'react';
-import { useLogger } from '../hooks/useLogger';
+import logger from '../utils/logger';
 import { handleError } from './errorHandler';
 
 export interface OfflineAction {
@@ -35,7 +35,7 @@ export interface OfflineState {
 }
 
 class OfflineManager {
-  private logger = useLogger('OfflineManager');
+  private logger = logger;
   private isOnline = navigator.onLine;
   private isOfflineMode = false;
   private serviceWorkerRegistration: ServiceWorkerRegistration | null = null;
@@ -115,7 +115,7 @@ class OfflineManager {
       const connection = (navigator as any).connection;
       if (connection) {
         connection.addEventListener('change', () => {
-          this.logger.debug('Connection info updated', {
+          this.logger.debug('OfflineManager', 'Connection info updated', {
             effectiveType: connection.effectiveType,
             downlink: connection.downlink,
             rtt: connection.rtt
@@ -189,7 +189,7 @@ class OfflineManager {
           data: action
         });
 
-        this.logger.info(`Queued ${type}`, {
+        this.logger.info('OfflineManager', `Queued ${type}`, {
           actionId: action.id,
           queuedAt: action.timestamp
         });
@@ -197,7 +197,7 @@ class OfflineManager {
         this.emit('action-queued', action);
       }
     } catch (error) {
-      this.logger.error((error as Error).message, {
+      this.logger.error('OfflineManager', (error as Error).message, {
         actionType: type,
         actionId: action.id
       });
@@ -354,11 +354,11 @@ class OfflineManager {
       const cache = await caches.open('chess-trainer-api-v1');
       await cache.addAll(urls);
       
-      this.logger.info(`Cached ${urls.length} resources`, {
+      this.logger.info('OfflineManager', `Cached ${urls.length} resources`, {
         urls: urls.slice(0, 5) // Log first 5 URLs
       });
     } catch (error) {
-      this.logger.error((error as Error).message, {
+      this.logger.error('OfflineManager', (error as Error).message, {
         urlCount: urls.length
       });
       throw error;
@@ -412,7 +412,7 @@ class OfflineManager {
         try {
           listener(data);
         } catch (error) {
-          this.logger.error((error as Error).message, {
+          this.logger.error('OfflineManager', (error as Error).message, {
             event,
             data
           });
@@ -429,7 +429,7 @@ class OfflineManager {
 
     switch (type) {
       case 'SYNC_COMPLETE':
-        this.logger.info(`Processed ${data.processedCount} items`, {
+        this.logger.info('OfflineManager', `Processed ${data.processedCount} items`, {
           processedCount: data.processedCount,
           remainingCount: data.remainingCount
         });
@@ -442,7 +442,7 @@ class OfflineManager {
         break;
 
       default:
-        this.logger.debug('Unknown service worker message', { type, data });
+        this.logger.debug('OfflineManager', 'Unknown service worker message', { type, data });
     }
   }
 

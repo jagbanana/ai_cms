@@ -1,6 +1,12 @@
 import { ComponentType } from 'react'
 import { ProcessedFrontmatter } from '../utils/frontmatter'
 
+// MDX Module type for proper typing of imported MDX files
+export interface MDXModule {
+  default: ComponentType
+  frontmatter: BlogFrontmatter
+}
+
 /**
  * Frontmatter interface for blog posts
  * Defines the metadata that must be included in each MDX file
