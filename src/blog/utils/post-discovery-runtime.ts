@@ -35,7 +35,7 @@ export async function discoverBlogPosts(): Promise<BlogDiscoveryResult> {
         slug: "getting-started-with-ai-cms",
         category: "tips",
         url: "/resources/tips/getting-started-with-ai-cms",
-        component: GettingStartedWithAICMS,
+        component: GettingStartedWithAICMS as unknown as ComponentType,
         readingTime: 5
       },
       {
@@ -52,7 +52,7 @@ export async function discoverBlogPosts(): Promise<BlogDiscoveryResult> {
         slug: "installation-and-setup",
         category: "guides",
         url: "/resources/guides/installation-and-setup",
-        component: InstallationAndSetup,
+        component: InstallationAndSetup as unknown as ComponentType,
         readingTime: 10
       },
       {
@@ -69,7 +69,7 @@ export async function discoverBlogPosts(): Promise<BlogDiscoveryResult> {
         slug: "complete-customization-guide",
         category: "guides",
         url: "/resources/guides/complete-customization-guide",
-        component: CompleteCustomizationGuide,
+        component: CompleteCustomizationGuide as unknown as ComponentType,
         readingTime: 12
       },
       {
@@ -86,7 +86,7 @@ export async function discoverBlogPosts(): Promise<BlogDiscoveryResult> {
         slug: "interesting-cms-facts",
         category: "facts",
         url: "/resources/facts/interesting-cms-facts",
-        component: InterestingCMSFacts,
+        component: InterestingCMSFacts as unknown as ComponentType,
         readingTime: 5
       }
     ]

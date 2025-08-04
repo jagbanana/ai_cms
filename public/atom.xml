@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://aicms.jaglab.org/resources</id>
-    <title>AI CMS Resources</title>
-    <updated>2025-08-03T20:47:40.924Z</updated>
-    <generator>AI CMS RSS Generator</generator>
+    <title>Chess Trainer Resources</title>
+    <updated>2025-08-04T00:22:17.261Z</updated>
+    <generator>Chess Trainer RSS Generator</generator>
     <author>
-        <name>AI CMS Team</name>
+        <name>Chess Trainer Team</name>
         <email>team@aicms.jaglab.org</email>
         <uri>https://aicms.jaglab.org</uri>
     </author>
     <link rel="alternate" href="https://aicms.jaglab.org/resources"/>
     <link rel="self" href="https://aicms.jaglab.org/atom.xml"/>
-    <subtitle>AI-First Content Management System</subtitle>
+    <subtitle>Learn chess with tips, guides, and news from Chess Trainer</subtitle>
     <logo>https://aicms.jaglab.org/blog-assets/chess-trainer-logo.png</logo>
     <icon>https://aicms.jaglab.org/favicon.ico</icon>
-    <rights>Copyright © 2025 AI CMS. All rights reserved.</rights>
+    <rights>Copyright © 2025 Chess Trainer. All rights reserved.</rights>
 </feed>
